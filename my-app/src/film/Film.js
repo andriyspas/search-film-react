@@ -3,4 +3,30 @@
  */
 import React, { Component } from 'react';
 
-class Film extends Component {}
+export class Film extends Component {
+
+  constructor(props){
+    super(props);
+
+    this.state  = {
+      film: props.film
+    }
+  }
+
+  render() {
+    return (
+      <div>
+        <div>
+          <div>
+            <img
+              src={this.state.film.poster}/>
+          </div>
+
+          <div>
+            <span>{ this.state.film.title }</span>
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
