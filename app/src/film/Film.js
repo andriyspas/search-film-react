@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 export class Film extends Component {
 
@@ -21,7 +21,7 @@ export class Film extends Component {
                                 src={ this.state.film.poster }/>
                         </div>
 
-                        <div className="form-group m-b-xs title">
+                        <div className="form-group">
                             <span>{ this.state.film.title }</span>
                         </div>
                     </div>

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Search } from './search/Search'
-import { FilmList } from './film/FilmList'
+import { Search } from './search/Search';
+import { FilmList } from './film/FilmList';
+import { ActorList } from './actor/ActorList';
 
 class App extends Component {
 
@@ -10,7 +11,8 @@ class App extends Component {
 
         this.state = {
             search: '',
-            films: []
+            films: [],
+            actors: []
         }
     }
 
@@ -18,13 +20,13 @@ class App extends Component {
         return (
             <div className="App">
                 <Search
-                    value={this.state.search}
-                    onChange={this.setSearch}
+                    value={ this.state.search }
+                    onChange={ this.setSearch }
                 />
 
                 <button
                     className="btn btn-default"
-                    onClick={this.fetchFilms}
+                    onClick={ this.fetchFilms }
                 >
                     Search
                 </button>
@@ -33,6 +35,13 @@ class App extends Component {
                     this.state.films.length > 0 &&
                     <FilmList
                         films={ this.state.films }
+                    />
+                }
+
+                {
+                    this.state.actors.length > 0 &&
+                    <ActorList
+                        actors={ this.state.actors }
                     />
                 }
             </div>
@@ -47,10 +56,13 @@ class App extends Component {
         fetch('http://localhost:8080/api/film/get/film/title/' + this.state.search, {method: 'GET'})
             .then(resp => resp.json())
             .then((res) => {
-                console.log(res);
                 this.setState({films: res});
-            })
-            .catch((err) => {
+            });
+
+        fetch('http://localhost:8080/api/person/get/name/' + this.state.search, {method: 'GET'})
+            .then(resp => resp.json())
+            .then((res) => {
+                this.setState({actors: res});
             })
     }
 }
