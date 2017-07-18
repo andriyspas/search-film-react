@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Search } from './search/Search';
+import { Filter } from './filter/Filter';
 import { FilmList } from './film/FilmList';
 import { ActorList } from './actor/ActorList';
 
 class App extends Component {
 
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
 
         this.state = {
             search: '',
             films: [],
-            actors: []
+            actors: [],
+            filter: ''
         }
     }
 
@@ -26,10 +28,14 @@ class App extends Component {
 
                 <button
                     className="btn btn-default"
-                    onClick={ this.fetchFilms }
+                    onClick={ this.fetchData }
                 >
                     Search
                 </button>
+
+                <Filter
+                    filter={this.state.filter}
+                />
 
                 {
                     this.state.films.length > 0 &&
@@ -52,19 +58,33 @@ class App extends Component {
         this.setState({search: e.target.value});
     };
 
-    fetchFilms = (e) => {
+    fetchData = () => {
+        switch (this.props.filter) {
+            case 'film':
+                this.fetchFilms();
+                break;
+
+            case 'actor':
+                this.fetchActors();
+                break;
+        }
+    };
+
+    fetchFilms = () => {
         fetch('http://localhost:8080/api/film/get/film/title/' + this.state.search, {method: 'GET'})
             .then(resp => resp.json())
             .then((res) => {
                 this.setState({films: res});
             });
+    };
 
+    fetchActors = () => {
         fetch('http://localhost:8080/api/person/get/name/' + this.state.search, {method: 'GET'})
             .then(resp => resp.json())
             .then((res) => {
                 this.setState({actors: res});
             })
-    }
+    };
 }
 
 export default App;
