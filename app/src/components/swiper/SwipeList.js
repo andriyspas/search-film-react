@@ -1,6 +1,6 @@
 import React from 'react'
 import Swiper from 'react-id-swiper'
-import { Film } from '../film/Film'
+import Film from '../film/Film'
 
 export class SwipeList extends React.Component {
     render() {

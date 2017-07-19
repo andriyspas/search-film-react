@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
-import { Actor } from './Actor';
+import Film from './Film';
 
-export class ActorList extends Component {
-
+export class FilmList extends Component {
     render() {
         return (
             <div>
                 {
-                    this.props.actors.map((item, index) => (
-                        <Actor
-                            actor={ item }
+                    this.props.films.map((item, index) => (
+                        <Film
+                            film={ item }
                             key={ index }
                         />
                     ))
