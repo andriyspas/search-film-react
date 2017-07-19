@@ -7,8 +7,8 @@
     "react-bootstrap": "^0.31.1",
     "react-dom": "^15.6.1",
     "react-scripts": "1.0.10",
-    "react-bootstrap": "^0.31.0",
-    "react-router-dom": "^4.1.1"
+    "react-router-dom": "^4.1.1",
+    "react-id-swiper": "^1.4.0"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -12,7 +12,7 @@ export class Film extends Component {
 
     render() {
         return (
-            <div className="col-sm-6 col-md-4 col-lg-3 panel-group">
+            <div className="">
                 <div className="panel panel-default">
                     <div className="panel-body">
                         <div className="form-group">

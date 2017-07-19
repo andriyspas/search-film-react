@@ -3,6 +3,7 @@ import './App.css';
 import { Search } from './search/Search';
 import { FilmList } from './film/FilmList';
 import { ActorList } from './actor/ActorList';
+import { SwipeList} from './swiper/SwipeList'
 
 class App extends Component {
 
@@ -12,8 +13,10 @@ class App extends Component {
         this.state = {
             search: '',
             films: [],
-            actors: []
+            actors: [],
+            popularFilms: []
         }
+      this.fetchPopularFilms()
     }
 
     render() {
@@ -30,6 +33,11 @@ class App extends Component {
                 >
                     Search
                 </button>
+
+                {
+                  !this.state.films.length > 0 && this.state.popularFilms.length > 0 &&
+                    <SwipeList films={this.state.popularFilms}/>
+                }
 
                 {
                     this.state.films.length > 0 &&
@@ -52,7 +60,15 @@ class App extends Component {
         this.setState({search: e.target.value});
     };
 
-    fetchFilms = (e) => {
+    fetchPopularFilms = () => {
+      fetch('http://localhost:8080/api/film/get/popular', {method: 'GET'})
+        .then(resp => resp.json())
+        .then((res) => {
+          this.setState({popularFilms: res});
+        });
+    }
+
+    fetchFilms = () => {
         fetch('http://localhost:8080/api/film/get/film/title/' + this.state.search, {method: 'GET'})
             .then(resp => resp.json())
             .then((res) => {
