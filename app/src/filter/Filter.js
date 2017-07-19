@@ -36,6 +36,7 @@ export class Filter extends Component {
                     name: 'Search by range'
                 }
             ],
+          filter: props.filter
         };
     }
 
@@ -53,18 +54,17 @@ export class Filter extends Component {
 
     handleSearchType = (event) => {
         this.setState({selectedSearchType: event.target.value});
-        this.props.filter = this.state.selectedSearchType;
+        this.setState({filter: this.state.selectedSearchType});
     };
 
     handleSearchBy = (event) => {
         this.setState({selectedSearchBy: event.target.value});
-        this.props.filter = this.state.selectedSearchBy;
+        this.setState({filter: this.state.selectedSearchBy});
     };
 
     handleSearchByYear = (event) => {
         this.setState({selectedSearchByYear: event.target.value});
-        this.props.filter = this.state.selectedSearchByYear;
-
+        this.setState({filter: this.state.selectedSearchByYear});
     };
 
     render() {

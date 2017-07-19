@@ -74,7 +74,6 @@ class App extends Component {
         });
     }
 
-    fetchFilms = () => {
     fetchData = () => {
         switch (this.props.filter) {
             case 'film':
