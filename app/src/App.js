@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import './App.css';
-import { Search } from './search/Search';
-import { Filter } from './filter/Filter';
-import { FilmList } from './film/FilmList';
-import { ActorList } from './actor/ActorList';
-import { SwipeList} from './swiper/SwipeList'
+import {Search} from './search/Search';
+import {Filter} from './filter/Filter';
+import {FilmList} from './film/FilmList';
+import {ActorList} from './actor/ActorList';
+import {SwipeList} from './swiper/SwipeList'
 
 class App extends Component {
 
@@ -17,8 +17,9 @@ class App extends Component {
             actors: [],
             popularFilms: [],
             filter: ''
-        }
-      this.fetchPopularFilms()
+        };
+
+        this.fetchPopularFilms()
     }
 
     render() {
@@ -37,12 +38,12 @@ class App extends Component {
                 </button>
 
                 <Filter
-                    filter={this.state.filter}
+                    filter={ this.state.filter }
                 />
 
                 {
-                  !this.state.films.length > 0 && this.state.popularFilms.length > 0 &&
-                    <SwipeList films={this.state.popularFilms}/>
+                    !this.state.films.length > 0 && this.state.popularFilms.length > 0 &&
+                    <SwipeList films={ this.state.popularFilms }/>
                 }
 
                 {
@@ -67,12 +68,12 @@ class App extends Component {
     };
 
     fetchPopularFilms = () => {
-      fetch('http://localhost:8080/api/film/get/popular', {method: 'GET'})
-        .then(resp => resp.json())
-        .then((res) => {
-          this.setState({popularFilms: res});
-        });
-    }
+        fetch('http://localhost:8080/api/film/get/popular', {method: 'GET'})
+            .then(resp => resp.json())
+            .then((res) => {
+                this.setState({popularFilms: res});
+            });
+    };
 
     fetchData = () => {
         switch (this.props.filter) {
