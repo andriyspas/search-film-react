@@ -1,20 +1,15 @@
 import React from 'react';
+import { Panel, FormGroup, Thumbnail } from  'react-bootstrap';
 
 const Film = ({film}) =>
-  <div className="">
-    <div className="panel panel-default">
-      <div className="panel-body">
-        <div className="form-group">
-          <img
-            className="img-responsive img-thumbnail"
-            src={ film.poster }/>
-        </div>
+    <Panel>
+        <FormGroup>
+            <Thumbnail src={ film.poster } />
+        </FormGroup>
 
-        <div className="form-group">
-          <span>{ film.title }</span>
-        </div>
-      </div>
-    </div>
-  </div>
+        <FormGroup>
+            { film.title }
+        </FormGroup>
+    </Panel>;
 
-  export default Film
+export default Film

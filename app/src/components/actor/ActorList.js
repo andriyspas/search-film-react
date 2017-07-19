@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import Actor from './Actor';
+import { Row } from  'react-bootstrap';
 
 export class ActorList extends Component {
 
     render() {
         return (
-            <div>
+            <Row>
                 {
                     this.props.actors.map((item, index) => (
                         <Actor
@@ -14,7 +15,7 @@ export class ActorList extends Component {
                         />
                     ))
                 }
-            </div>
+            </Row>
         );
     }
 }

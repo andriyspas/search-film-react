@@ -1,19 +1,23 @@
 import React, { Component } from 'react';
+import { Row, Col } from  'react-bootstrap';
 import Film from './Film';
+
 
 export class FilmList extends Component {
     render() {
         return (
-            <div>
+            <Row>
                 {
                     this.props.films.map((item, index) => (
-                        <Film
-                            film={ item }
-                            key={ index }
-                        />
+                        <Col sm={6} md={4} lg={3}>
+                            <Film
+                                film={ item }
+                                key={ index }
+                            />
+                        </Col>
                     ))
                 }
-            </div>
+            </Row>
         );
     }
 }

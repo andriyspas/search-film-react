@@ -4,7 +4,8 @@ import { Search } from './components/search/Search';
 import { Filter } from './components/filter/Filter';
 import { FilmList } from './components/film/FilmList';
 import { ActorList } from './components/actor/ActorList';
-import { SwipeList} from './components/swiper/SwipeList'
+import { SwipeList } from './components/swiper/SwipeList';
+import { Grid } from  'react-bootstrap';
 
 class App extends Component {
 
@@ -16,14 +17,15 @@ class App extends Component {
             films: [],
             actors: [],
             popularFilms: [],
-            filter: ''
-        }
-      this.fetchPopularFilms()
+            filter: 'film'
+        };
+
+        this.fetchPopularFilms()
     }
 
     setFilter = (value) => {
-      this.setState({filter: value});
-    }
+        this.setState({filter: value});
+    };
 
     render() {
         return (
@@ -41,27 +43,29 @@ class App extends Component {
                 </button>
 
                 <Filter
-                    onChange={this.setFilter}
+                    onChange={ this.setFilter }
                 />
 
-                {
-                  !this.state.films.length > 0 && this.state.popularFilms.length > 0 &&
-                    <SwipeList films={this.state.popularFilms}/>
-                }
+                <Grid>
+                    {
+                        (!this.state.films.length && !this.state.actors.length) > 0 && this.state.popularFilms.length > 0 &&
+                        <SwipeList films={ this.state.popularFilms }/>
+                    }
 
-                {
-                    this.state.films.length > 0 &&
-                    <FilmList
-                        films={ this.state.films }
-                    />
-                }
+                    {
+                        this.state.films.length > 0 &&
+                        <FilmList
+                            films={ this.state.films }
+                        />
+                    }
 
-                {
-                    this.state.actors.length > 0 &&
-                    <ActorList
-                        actors={ this.state.actors }
-                    />
-                }
+                    {
+                        this.state.actors.length > 0 &&
+                        <ActorList
+                            actors={ this.state.actors }
+                        />
+                    }
+                </Grid>
             </div>
         );
     }
@@ -71,15 +75,15 @@ class App extends Component {
     };
 
     fetchPopularFilms = () => {
-      fetch('http://localhost:8080/api/film/get/popular', {method: 'GET'})
-        .then(resp => resp.json())
-        .then((res) => {
-          this.setState({popularFilms: res});
-        });
-    }
+        fetch('http://localhost:8080/api/film/get/popular', {method: 'GET'})
+            .then(resp => resp.json())
+            .then((res) => {
+                this.setState({popularFilms: res});
+            });
+    };
 
     fetchData = () => {
-        switch (this.props.filter) {
+        switch (this.state.filter) {
             case 'film':
                 this.fetchFilms();
                 break;
@@ -94,7 +98,7 @@ class App extends Component {
         fetch('http://localhost:8080/api/film/get/film/title/' + this.state.search, {method: 'GET'})
             .then(resp => resp.json())
             .then((res) => {
-                this.setState({films: res});
+                this.setState({films: res, actors: []});
             });
     };
 
@@ -102,7 +106,7 @@ class App extends Component {
         fetch('http://localhost:8080/api/person/get/name/' + this.state.search, {method: 'GET'})
             .then(resp => resp.json())
             .then((res) => {
-                this.setState({actors: res});
+                this.setState({actors: res, films: []});
             })
     };
 }
