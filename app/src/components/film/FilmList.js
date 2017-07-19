@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { Row, Col } from  'react-bootstrap';
 import Film from './Film';
 
-
-export class FilmList extends Component {
+class FilmList extends Component {
     render() {
         return (
             <Row>
@@ -21,3 +20,5 @@ export class FilmList extends Component {
         );
     }
 }
+
+export default FilmList;

@@ -3,7 +3,6 @@ import Actor from './Actor';
 import { Row } from  'react-bootstrap';
 
 export class ActorList extends Component {
-
     render() {
         return (
             <Row>
