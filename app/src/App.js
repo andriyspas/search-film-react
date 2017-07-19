@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import { Search } from './components/search/Search';
 import { Filter } from './components/filter/Filter';
-import { FilmList } from './components/film/FilmList';
-import { ActorList } from './components/actor/ActorList';
+import FilmList from './components/film/FilmList';
+import ActorList from './components/actor/ActorList';
 import { SwipeList } from './components/swiper/SwipeList';
 import { Grid } from  'react-bootstrap';
 

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Actor from './Actor';
 import { Row } from  'react-bootstrap';
 
-export class ActorList extends Component {
+class ActorList extends Component {
     render() {
         return (
             <Row>
@@ -18,3 +18,5 @@ export class ActorList extends Component {
         );
     }
 }
+
+export default ActorList;

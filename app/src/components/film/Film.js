@@ -12,4 +12,4 @@ const Film = ({film}) =>
         </FormGroup>
     </Panel>;
 
-export default Film
+export default Film;
