@@ -1,8 +1,7 @@
-import React, {Component} from 'react';
-import {Film} from './Film';
+import React, { Component } from 'react';
+import { Film } from './Film';
 
 export class FilmList extends Component {
-
     render() {
         return (
             <div>
