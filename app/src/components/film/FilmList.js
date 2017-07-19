@@ -8,11 +8,8 @@ class FilmList extends Component {
             <Row>
                 {
                     this.props.films.map((item, index) => (
-                        <Col sm={6} md={4} lg={3}>
-                            <Film
-                                film={ item }
-                                key={ index }
-                            />
+                        <Col sm={6} md={4} lg={3} key={ index }>
+                            <Film film={ item }/>
                         </Col>
                     ))
                 }

@@ -19,10 +19,9 @@ const Actor = ({actor}) =>
             <Row>
                 {
                     actor.filmList.map((item, index) => (
-                        <Col sm={6} md={4} lg={3}>
+                        <Col sm={6} md={4} lg={3} key={ index }>
                             <Film
                                 film={ item }
-                                key={ index }
                             />
                         </Col>
                     ))

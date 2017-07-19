@@ -1,15 +1,124 @@
-import React from 'react';
-import { Panel, FormGroup, Thumbnail } from  'react-bootstrap';
+import React, { Component } from 'react'
+import { Modal, Button, Panel, FormGroup, Thumbnail, Col, Row } from  'react-bootstrap';
 
-const Film = ({film}) =>
-    <Panel>
-        <FormGroup>
-            <Thumbnail src={ film.poster } />
-        </FormGroup>
+class Film extends Component {
+    constructor() {
+        super();
 
-        <FormGroup>
-            { film.title }
-        </FormGroup>
-    </Panel>;
+        this.state = {
+            showModal: false
+        }
+    };
+
+    close = () => {
+        this.setState({ showModal: false });
+        console.log(this.props.film.genres)
+    };
+
+    open = () => {
+        this.setState({ showModal: true });
+    };
+
+    render() {
+        const { film } = this.props;
+
+        return(
+            <div>
+                <Panel onClick={ this.open }>
+                    <FormGroup>
+                        <Thumbnail src={ film.poster } />
+                    </FormGroup>
+
+                    <FormGroup>
+                        { film.title }
+                    </FormGroup>
+                </Panel>
+
+                <Modal
+                    show={ this.state.showModal }
+                    onHide={ this.close }
+                >
+
+                    <Modal.Header closeButton>
+                        <Modal.Title>{ film.title }</Modal.Title>
+                    </Modal.Header>
+
+                    <Modal.Body>
+                        <Row>
+                            <Col xs={12}>
+                                <Thumbnail src={ film.poster } />
+                            </Col>
+
+                            <Col xs={12}>
+                                <label>Title: </label>
+                                <span>{ film.title }</span>
+                            </Col>
+
+                            <Col xs={12}>
+                                <label>Year: </label>
+                                <span>{ film.year }</span>
+                            </Col>
+
+                            <Col xs={12}>
+                                <label>Rating: </label>
+                                <span>{ film.imdbRating }</span>
+                            </Col>
+
+                            <Col xs={12}>
+                                <label>IMDB votes: </label>
+                                <span>{ film.imdbVotes }</span>
+                            </Col>
+
+                            <Col xs={12}>
+                                <label>Language: </label>
+                                <span>{ film.language }</span>
+                            </Col>
+
+                            {
+                                film.genres.length > 0 &&
+
+                                <Col xs={12}>
+                                    <label>Genres: </label>
+                                    {
+                                        film.genres.map((item, index) => (
+                                            <span key={ index }>
+                                            { item.name },
+                                        </span>
+                                        ))
+                                    }
+                                </Col>
+                            }
+
+                            <Col xs={12}>
+                                <label>Released: </label>
+                                <span>{ film.released }</span>
+                            </Col>
+
+                            <Col xs={12}>
+                                <label>Run-time: </label>
+                                <span>{ film.runtime }</span>
+                            </Col>
+
+                            <Col xs={12}>
+                                <label>Year: </label>
+                                <span>{ film.year }</span>
+                            </Col>
+
+                            <Col xs={12}>
+                                <label>Plot: </label>
+                                <span>{ film.plot }</span>
+                            </Col>
+                        </Row>
+                    </Modal.Body>
+
+                    <Modal.Footer>
+                        <Button onClick={ this.close }>Close</Button>
+                    </Modal.Footer>
+
+                </Modal>
+            </div>
+        )
+    }
+}
 
 export default Film;
