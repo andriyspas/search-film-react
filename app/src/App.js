@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Search } from './search/Search';
-import { Filter } from './filter/Filter';
-import { FilmList } from './film/FilmList';
-import { ActorList } from './actor/ActorList';
-import { SwipeList} from './swiper/SwipeList'
+import { Search } from './components/search/Search';
+import { Filter } from './components/filter/Filter';
+import { FilmList } from './components/film/FilmList';
+import { ActorList } from './components/actor/ActorList';
+import { SwipeList} from './components/swiper/SwipeList'
 
 class App extends Component {
 
@@ -19,6 +19,10 @@ class App extends Component {
             filter: ''
         }
       this.fetchPopularFilms()
+    }
+
+    setFilter = (value) => {
+      this.setState({filter: value});
     }
 
     render() {
@@ -37,7 +41,7 @@ class App extends Component {
                 </button>
 
                 <Filter
-                    filter={this.state.filter}
+                    onChange={this.setFilter}
                 />
 
                 {
