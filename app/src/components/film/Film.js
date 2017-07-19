@@ -17,4 +17,4 @@ const Film = ({film}) =>
     </div>
   </div>
 
-  export default Film
+export default Film

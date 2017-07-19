@@ -1,110 +1,110 @@
-import React, { Component } from 'react';
-import './App.css';
-import { Search } from './components/search/Search';
-import { Filter } from './components/filter/Filter';
-import { FilmList } from './components/film/FilmList';
-import { ActorList } from './components/actor/ActorList';
-import { SwipeList} from './components/swiper/SwipeList'
+import React, { Component } from 'react'
+import './App.css'
+import { Search } from './components/search/Search'
+import { Filter } from './components/filter/Filter'
+import { FilmList } from './components'
+import { ActorList } from './components'
+import { SwipeList } from './components/swiper/SwipeList'
 
 class App extends Component {
 
-    constructor() {
-        super();
+  constructor () {
+    super()
 
-        this.state = {
-            search: '',
-            films: [],
-            actors: [],
-            popularFilms: [],
-            filter: ''
+    this.state = {
+      search: '',
+      films: [],
+      actors: [],
+      popularFilms: [],
+      filter: ''
+    }
+    this.fetchPopularFilms()
+  }
+
+  setFilter = (value) => {
+    this.setState({filter: value})
+  }
+
+  render () {
+    return (
+      <div className="App">
+        <Search
+          value={ this.state.search }
+          onChange={ this.setSearch }
+        />
+
+        <button
+          className="btn btn-default"
+          onClick={ this.fetchData }
+        >
+          Search
+        </button>
+
+        <Filter
+          onChange={this.setFilter}
+        />
+
+        {
+          !this.state.films.length > 0 && this.state.popularFilms.length > 0 &&
+          <SwipeList films={this.state.popularFilms}/>
         }
-      this.fetchPopularFilms()
-    }
 
-    setFilter = (value) => {
-      this.setState({filter: value});
-    }
-
-    render() {
-        return (
-            <div className="App">
-                <Search
-                    value={ this.state.search }
-                    onChange={ this.setSearch }
-                />
-
-                <button
-                    className="btn btn-default"
-                    onClick={ this.fetchData }
-                >
-                    Search
-                </button>
-
-                <Filter
-                    onChange={this.setFilter}
-                />
-
-                {
-                  !this.state.films.length > 0 && this.state.popularFilms.length > 0 &&
-                    <SwipeList films={this.state.popularFilms}/>
-                }
-
-                {
-                    this.state.films.length > 0 &&
-                    <FilmList
-                        films={ this.state.films }
-                    />
-                }
-
-                {
-                    this.state.actors.length > 0 &&
-                    <ActorList
-                        actors={ this.state.actors }
-                    />
-                }
-            </div>
-        );
-    }
-
-    setSearch = (e) => {
-        this.setState({search: e.target.value});
-    };
-
-    fetchPopularFilms = () => {
-      fetch('http://localhost:8080/api/film/get/popular', {method: 'GET'})
-        .then(resp => resp.json())
-        .then((res) => {
-          this.setState({popularFilms: res});
-        });
-    }
-
-    fetchData = () => {
-        switch (this.props.filter) {
-            case 'film':
-                this.fetchFilms();
-                break;
-
-            case 'actor':
-                this.fetchActors();
-                break;
+        {
+          this.state.films.length > 0 &&
+          <FilmList
+            films={ this.state.films }
+          />
         }
-    };
 
-    fetchFilms = () => {
-        fetch('http://localhost:8080/api/film/get/film/title/' + this.state.search, {method: 'GET'})
-            .then(resp => resp.json())
-            .then((res) => {
-                this.setState({films: res});
-            });
-    };
+        {
+          this.state.actors.length > 0 &&
+          <ActorList
+            actors={ this.state.actors }
+          />
+        }
+      </div>
+    )
+  }
 
-    fetchActors = () => {
-        fetch('http://localhost:8080/api/person/get/name/' + this.state.search, {method: 'GET'})
-            .then(resp => resp.json())
-            .then((res) => {
-                this.setState({actors: res});
-            })
-    };
+  setSearch = (e) => {
+    this.setState({search: e.target.value})
+  }
+
+  fetchPopularFilms = () => {
+    fetch('http://localhost:8080/api/film/get/popular', {method: 'GET'})
+      .then(resp => resp.json())
+      .then((res) => {
+        this.setState({popularFilms: res})
+      })
+  }
+
+  fetchData = () => {
+    switch (this.props.filter) {
+      case 'film':
+        this.fetchFilms()
+        break
+
+      case 'actor':
+        this.fetchActors()
+        break
+    }
+  }
+
+  fetchFilms = () => {
+    fetch('http://localhost:8080/api/film/get/film/title/' + this.state.search, {method: 'GET'})
+      .then(resp => resp.json())
+      .then((res) => {
+        this.setState({films: res})
+      })
+  }
+
+  fetchActors = () => {
+    fetch('http://localhost:8080/api/person/get/name/' + this.state.search, {method: 'GET'})
+      .then(resp => resp.json())
+      .then((res) => {
+        this.setState({actors: res})
+      })
+  }
 }
 
-export default App;
+export default App
