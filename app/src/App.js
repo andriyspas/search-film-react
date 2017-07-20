@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import './index.css';
-import { FilmList, ActorList, Search, Filter, Header } from './components';
+import { FilmList, ActorList, Search, Filter, Header, Footer } from './components';
 import { SwipeList } from './components/swiper/SwipeList';
-import { Grid, Button } from  'react-bootstrap';
+import { Grid, Button, Row, Col } from  'react-bootstrap';
 
 class App extends Component {
 
@@ -30,22 +30,31 @@ class App extends Component {
             <div className="App">
                 <Header/>
 
-                <section>
-                    <Search
-                        value={ this.state.search }
-                        onChange={ this.setSearch }
-                    />
-                  {
-                      this.state.filter === 'range' &&
-                        <Search
-                          value={ this.state.searchRange }
-                          onChange={ this.setSearchRange }
-                        />
-                  }
+                <section className="search">
+                    <Grid>
+                        <Row>
+                            <Col xs={12}>
+                                <h2>Lorem ipsum</h2>
+                                <h2>is simply dummy text of the printing and typesetting industry</h2>
+                            </Col>
+                        </Row>
 
-                    <Button onClick={ this.fetchData }>
-                        Search
-                    </Button>
+                        <Search
+                            value={ this.state.search }
+                            onChange={ this.setSearch }
+                        />
+                        {
+                            this.state.filter === 'range' &&
+                            <Search
+                                value={ this.state.searchRange }
+                                onChange={ this.setSearchRange }
+                            />
+                        }
+
+                        <Button onClick={ this.fetchData }>
+                            Search
+                        </Button>
+                    </Grid>
                 </section>
 
                 <Filter
@@ -72,6 +81,8 @@ class App extends Component {
                         />
                     }
                 </Grid>
+
+                <Footer/>
             </div>
         );
     }
@@ -141,15 +152,15 @@ class App extends Component {
             .then(resp => resp.json())
             .then((res) => {
                 let films = [];
-              res.map((item) => {
-                  if(item.filmDTOs !== null) {
-                    films =  films.concat(item.filmDTOs)
-                    console.log(item)
-                  }
+                res.map((item) => {
+                    if (item.filmDTOs !== null) {
+                        films = films.concat(item.filmDTOs)
+                        console.log(item)
+                    }
 
-              })
-              console.log(films)
-              this.setState({actors: [], films: films});
+                })
+                console.log(films)
+                this.setState({actors: [], films: films});
             })
     };
 }

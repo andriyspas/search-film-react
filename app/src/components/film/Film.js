@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Modal, Button, Panel, FormGroup, Thumbnail, Col, Row } from  'react-bootstrap';
+import NoRoom from '../../images/no-room.jpg';
 
 class Film extends Component {
     constructor() {
@@ -28,7 +29,11 @@ class Film extends Component {
                     className="tile"
                 >
                     <FormGroup>
-                        <Thumbnail src={ film.poster } />
+                        { film.poster ? (
+                            <Thumbnail src={ film.poster }/>
+                        ) : (
+                            <Thumbnail src={NoRoom}/>
+                        )}
                     </FormGroup>
 
                     <FormGroup className="film-title">
@@ -52,7 +57,11 @@ class Film extends Component {
                     <Modal.Body>
                         <Row>
                             <Col xs={12}>
-                                <Thumbnail src={ film.poster }/>
+                                { film.poster ? (
+                                    <Thumbnail src={ film.poster }/>
+                                ) : (
+                                    <Thumbnail src={NoRoom}/>
+                                )}
                             </Col>
 
                             <Col xs={12}>

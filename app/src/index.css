@@ -22,7 +22,7 @@ header {
   header a {
     display: block;
     width: 120px; }
-    header a a img {
+    header a img {
       width: 100%; }
 
 .search {
@@ -123,3 +123,22 @@ select {
 
 .modal-body label {
   margin-right: 5px; }
+
+footer {
+  border-top: 1px solid #ddd;
+  border-top: 1px solid #ddd;
+  box-sizing: border-box;
+  height: 70px;
+  margin-top: 15px;
+  padding: 15px; }
+  footer:after {
+    clear: both;
+    content: '';
+    display: block; }
+  footer a {
+    color: #000;
+    display: inline-block;
+    float: right;
+    transition: color .2s; }
+    footer a:hover {
+      color: #d9534f; }
