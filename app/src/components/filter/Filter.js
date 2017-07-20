@@ -19,7 +19,7 @@ export class Filter extends Component {
             ],
             searchBy: [
                 {
-                    value: 'name',
+                    value: 'film',
                     name: 'Search by name'
                 },
                 {
@@ -38,7 +38,7 @@ export class Filter extends Component {
                 }
             ],
             selectedSearchType: 'film',
-            selectedSearchBy: 'name',
+            selectedSearchBy: 'film',
             selectedSearchByYear: 'year'
         }
     }
@@ -75,7 +75,7 @@ export class Filter extends Component {
 
     render() {
         return (
-            <Grid>
+            <Grid className="filter">
                 <Row>
                     <Col sm={4}>Filters:</Col>
                 </Row>

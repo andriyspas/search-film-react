@@ -12,7 +12,6 @@ class Film extends Component {
 
     close = () => {
         this.setState({ showModal: false });
-        console.log(this.props.film.genres)
     };
 
     open = () => {
@@ -29,7 +28,7 @@ class Film extends Component {
                         <Thumbnail src={ film.poster } />
                     </FormGroup>
 
-                    <FormGroup>
+                    <FormGroup className="film-title">
                         { film.title }
                     </FormGroup>
                 </Panel>

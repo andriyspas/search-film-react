@@ -1,5 +1,50 @@
 body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+header {
+    padding: 15px;
+}
+
+header a {
+    width: 120px;
+    display: block;
+}
+
+header a img {
+    width: 100%;
+}
+
+.search {
+    border-bottom: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+    height: 300px;
+    background-color: #f5f5f5;
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.search input {
+    max-width: 768px;
+    margin: 0 auto;
+    font-size: 24px;
+    font-weight: 100;
+    padding: 6px 0;
+    height: 100%;
+    border: none;
+    border-bottom: 2px solid #ddd;
+    background: transparent;
+    box-shadow: none;
+}
+
+.filter {
+    margin-bottom: 15px;
+}
+
+.film-title {
+    height: 40px;
+    overflow: hidden;
+    margin: 0;
 }

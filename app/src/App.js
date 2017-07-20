@@ -5,7 +5,8 @@ import { Filter } from './components/filter/Filter';
 import FilmList from './components/film/FilmList';
 import ActorList from './components/actor/ActorList';
 import { SwipeList } from './components/swiper/SwipeList';
-import { Grid } from  'react-bootstrap';
+import { Grid, Button } from  'react-bootstrap';
+import Header from  './components/header/Header';
 
 class App extends Component {
 
@@ -30,17 +31,18 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-                <Search
-                    value={ this.state.search }
-                    onChange={ this.setSearch }
-                />
+                <Header/>
 
-                <button
-                    className="btn btn-default"
-                    onClick={ this.fetchData }
-                >
-                    Search
-                </button>
+                <section className="search">
+                    <Search
+                        value={ this.state.search }
+                        onChange={ this.setSearch }
+                    />
+
+                    <Button onClick={ this.fetchData }>
+                        Search
+                    </Button>
+                </section>
 
                 <Filter
                     onChange={ this.setFilter }
@@ -91,6 +93,10 @@ class App extends Component {
             case 'actor':
                 this.fetchActors();
                 break;
+
+            case 'year':
+                this.fetchFilmByYear();
+                break;
         }
     };
 
@@ -107,6 +113,14 @@ class App extends Component {
             .then(resp => resp.json())
             .then((res) => {
                 this.setState({actors: res, films: []});
+            })
+    };
+
+    fetchFilmByYear = () => {
+        fetch('http://localhost:8080/api/search/year/get?year=' + this.state.search, {method: 'GET',})
+            .then(resp => resp.json())
+            .then((res) => {
+                this.setState({actors: [], films: res.filmDTOs});
             })
     };
 }

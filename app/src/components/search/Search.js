@@ -1,14 +1,27 @@
 import React, { Component } from 'react'
-import { FormControl } from 'react-bootstrap'
+import { FormControl, Grid, Row, Col } from 'react-bootstrap'
 
 export class Search extends Component {
     render() {
         return (
-            <FormControl
-                type="text"
-                value={ this.props.value }
-                onChange={ this.props.onChange }
-            />
+        <Grid fluid>
+            <Row>
+                <Col>
+                    <h2>Lorem ipsum</h2>
+                    <h2>is simply dummy text of the printing and typesetting industry</h2>
+                </Col>
+            </Row>
+
+            <Row>
+                <Col>
+                    <FormControl
+                        type="text"
+                        value={ this.props.value }
+                        onChange={ this.props.onChange }
+                    />
+                </Col>
+            </Row>
+        </Grid>
         )
     }
 }

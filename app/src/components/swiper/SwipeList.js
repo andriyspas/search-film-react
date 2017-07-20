@@ -1,6 +1,7 @@
 import React from 'react'
 import Swiper from 'react-id-swiper'
 import Film from '../film/Film'
+import { Col, Row } from  'react-bootstrap';
 
 export class SwipeList extends React.Component {
     render() {
@@ -25,17 +26,27 @@ export class SwipeList extends React.Component {
         };
 
         return (
-            <Swiper {...params}>
-                {
-                    this.props.films.map((item, index) => (
-                        <div key={ index }>
-                            <Film
-                                film={ item }
-                            />
-                        </div>
-                    ))
-                }
-            </Swiper>
+            <div>
+                <Row>
+                    <Col sm={4}>Most popular:</Col>
+                </Row>
+
+                <Row>
+                    <Col sm={12}>
+                        <Swiper {...params}>
+                            {
+                                this.props.films.map((item, index) => (
+                                    <div key={ index }>
+                                        <Film
+                                            film={ item }
+                                        />
+                                    </div>
+                                ))
+                            }
+                        </Swiper>
+                    </Col>
+                </Row>
+            </div>
         )
     }
 }
