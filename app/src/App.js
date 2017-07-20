@@ -43,6 +43,9 @@ class App extends Component {
                             value={ this.state.search }
                             onChange={ this.setSearch }
                         />
+                        <Button className='search-button' onClick={ this.fetchData }>
+                            Search
+                        </Button>
                         {
                             this.state.filter === 'range' &&
                             <Search
@@ -51,9 +54,7 @@ class App extends Component {
                             />
                         }
 
-                        <Button onClick={ this.fetchData }>
-                            Search
-                        </Button>
+
                     </Grid>
                 </section>
 
