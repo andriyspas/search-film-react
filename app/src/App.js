@@ -39,7 +39,7 @@ class App extends Component {
                         </Col>
                     </Row>
 
-                    <Row className="input-group">
+                    <Row className="input-groups">
                         <Col>
                             <Search
                                 value={ this.state.search }

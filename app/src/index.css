@@ -17,17 +17,6 @@ button {
   border: none;
   background: transparent; }
 
-.www {
-  position: absolute;
-  bottom: 20px;
-  right: 15px;
-  left: 15px;
-  max-width: 768px;
-  margin: 0 auto; }
-  .www .range {
-    display: inline-block;
-    width: 45%; }
-
 header {
   padding: 15px; }
   header a {
@@ -47,6 +36,16 @@ header {
   @media (min-width: 768px) {
     .search {
       height: 400px; } }
+  .search .input-groups {
+    position: absolute;
+    bottom: 20px;
+    right: 15px;
+    left: 15px;
+    max-width: 768px;
+    margin: 0 auto; }
+    .search .input-groups .range {
+      display: inline-block;
+      width: 45%; }
   .search input {
     font-size: 24px;
     font-weight: 100;
