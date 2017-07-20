@@ -74,7 +74,7 @@ class Film extends Component {
                             </Col>
 
                             {
-                                film.genres.length > 0 &&
+                                film.genres !== undefined && film.genres.length > 0 &&
 
                                 <Col xs={12}>
                                     <label>Genres: </label>

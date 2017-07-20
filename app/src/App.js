@@ -15,6 +15,7 @@ class App extends Component {
 
         this.state = {
             search: '',
+            searchRange: '',
             films: [],
             actors: [],
             popularFilms: [],
@@ -33,11 +34,18 @@ class App extends Component {
             <div className="App">
                 <Header/>
 
-                <section className="search">
+                <section>
                     <Search
                         value={ this.state.search }
                         onChange={ this.setSearch }
                     />
+                  {
+                      this.state.filter === 'range' &&
+                        <Search
+                          value={this.state.searchRange}
+                          onChange={this.setSearchRange}
+                        />
+                  }
 
                     <Button onClick={ this.fetchData }>
                         Search
@@ -76,6 +84,10 @@ class App extends Component {
         this.setState({search: e.target.value});
     };
 
+    setSearchRange = (e) => {
+        this.setState({searchRange: e.target.value});
+    };
+
     fetchPopularFilms = () => {
         fetch('http://localhost:8080/api/film/get/popular', {method: 'GET'})
             .then(resp => resp.json())
@@ -96,6 +108,10 @@ class App extends Component {
 
             case 'year':
                 this.fetchFilmByYear();
+                break;
+
+            case 'range':
+                this.fetchFilmByRange();
                 break;
         }
     };
@@ -121,6 +137,23 @@ class App extends Component {
             .then(resp => resp.json())
             .then((res) => {
                 this.setState({actors: [], films: res.filmDTOs});
+            })
+    };
+
+    fetchFilmByRange = () => {
+        fetch('http://localhost:8080/api/search/year/range?from=' + this.state.search + '&to=' + this.state.searchRange, {method: 'GET',})
+            .then(resp => resp.json())
+            .then((res) => {
+                let films = [];
+              res.map((item) => {
+                  if(item.filmDTOs !== null) {
+                    films =  films.concat(item.filmDTOs)
+                    console.log(item)
+                  }
+
+              })
+              console.log(films)
+              this.setState({actors: [], films: films});
             })
     };
 }
