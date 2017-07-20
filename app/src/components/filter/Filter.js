@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Select } from '../select/Select'
 import { Row, Col, Grid } from  'react-bootstrap';
 
-export class Filter extends Component {
+class Filter extends Component {
     constructor(props) {
         super(props);
 
@@ -113,3 +113,5 @@ export class Filter extends Component {
         )
     }
 }
+
+export default Filter;

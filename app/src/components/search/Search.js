@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { FormControl, Grid, Row, Col } from 'react-bootstrap'
 
-export class Search extends Component {
+class Search extends Component {
     constructor() {
         super();
 
@@ -39,3 +39,5 @@ export class Search extends Component {
         )
     }
 }
+
+export default Search;

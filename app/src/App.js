@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
-import './App.css';
-import { Search } from './components/search/Search';
-import { Filter } from './components/filter/Filter';
-import FilmList from './components/film/FilmList';
-import ActorList from './components/actor/ActorList';
+import './index.css';
+import { FilmList, ActorList, Search, Filter, Header } from './components';
 import { SwipeList } from './components/swiper/SwipeList';
 import { Grid, Button } from  'react-bootstrap';
-import Header from  './components/header/Header';
 
 class App extends Component {
 
@@ -42,8 +38,8 @@ class App extends Component {
                   {
                       this.state.filter === 'range' &&
                         <Search
-                          value={this.state.searchRange}
-                          onChange={this.setSearchRange}
+                          value={ this.state.searchRange }
+                          onChange={ this.setSearchRange }
                         />
                   }
 
