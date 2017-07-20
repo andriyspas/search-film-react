@@ -23,7 +23,10 @@ class Film extends Component {
 
         return(
             <div>
-                <Panel onClick={ this.open }>
+                <Panel
+                    onClick={ this.open }
+                    className="tile"
+                >
                     <FormGroup>
                         <Thumbnail src={ film.poster } />
                     </FormGroup>
@@ -31,12 +34,16 @@ class Film extends Component {
                     <FormGroup className="film-title">
                         { film.title }
                     </FormGroup>
+
+                    <div className="plug">
+                        <button>View more</button>
+                    </div>
                 </Panel>
 
                 <Modal
                     show={ this.state.showModal }
                     onHide={ this.close }
-                >
+                    >
 
                     <Modal.Header closeButton>
                         <Modal.Title>{ film.title }</Modal.Title>
@@ -45,7 +52,7 @@ class Film extends Component {
                     <Modal.Body>
                         <Row>
                             <Col xs={12}>
-                                <Thumbnail src={ film.poster } />
+                                <Thumbnail src={ film.poster }/>
                             </Col>
 
                             <Col xs={12}>
@@ -79,8 +86,8 @@ class Film extends Component {
                                 <Col xs={12}>
                                     <label>Genres: </label>
                                     {
-                                        film.genres.map((item, index) => (
-                                            <span key={ index }>
+                                        film.genres.map((item) => (
+                                            <span key={ item.name }>
                                             { item.name },
                                         </span>
                                         ))

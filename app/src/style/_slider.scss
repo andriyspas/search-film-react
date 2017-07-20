@@ -1,0 +1,19 @@
+.swiper-container {
+  padding-bottom: 25px;
+
+  .swiper-button {
+    &-prev,
+    &-next {
+      background-size: contain;
+      bottom: 0;
+      right: 0;
+      top: auto;
+      width: 12px;
+    }
+
+    &-prev {
+      left: auto;
+      right: 50px;
+    }
+  }
+}

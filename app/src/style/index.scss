@@ -1,0 +1,30 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+.container {
+  max-width: 440px;
+
+  @media(min-width: 768px) {
+    max-width: 100%;
+  }
+}
+
+.section-name {
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+button {
+  border: none;
+  background: transparent;
+}
+
+@import "header";
+@import "search";
+@import "filters";
+@import "slider";
+@import "film";
+@import "modal";

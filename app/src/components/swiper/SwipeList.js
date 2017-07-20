@@ -28,7 +28,7 @@ export class SwipeList extends React.Component {
         return (
             <div>
                 <Row>
-                    <Col sm={4}>Most popular:</Col>
+                    <Col sm={4} className="section-name">Most popular:</Col>
                 </Row>
 
                 <Row>

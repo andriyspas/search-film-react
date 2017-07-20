@@ -75,9 +75,9 @@ export class Filter extends Component {
 
     render() {
         return (
-            <Grid className="filter">
+            <Grid>
                 <Row>
-                    <Col sm={4}>Filters:</Col>
+                    <Col sm={4} className="section-name">Filters:</Col>
                 </Row>
 
                 <Row>
