@@ -17,6 +17,17 @@ button {
   border: none;
   background: transparent; }
 
+.www {
+  position: absolute;
+  bottom: 20px;
+  right: 15px;
+  left: 15px;
+  max-width: 768px;
+  margin: 0 auto; }
+  .www .range {
+    display: inline-block;
+    width: 45%; }
+
 header {
   padding: 15px; }
   header a {
@@ -37,8 +48,6 @@ header {
     .search {
       height: 400px; } }
   .search input {
-    max-width: 768px;
-    margin: 0 auto;
     font-size: 24px;
     font-weight: 100;
     padding: 6px 0;
@@ -48,12 +57,8 @@ header {
     box-shadow: none;
     border-radius: 0;
     height: 40px;
-    position: absolute;
-    bottom: 40px;
-    right: 15px;
-    left: 15px;
     transform: scale3d(0.5, 0.5, 1);
-    transition: all 0.5s;
+    transition: transform 0.5s;
     transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1); }
     .search input.open {
       transform: translate3d(0, -50%, 0);

@@ -13,11 +13,11 @@ class Search extends Component {
     addClass = () => {
         this.setState({className: "open"});
     };
-    
+
     render () {
         return (
             <FormControl
-                className={ this.state.className }
+                className={ `${ this.props.rangeClass === 'range' ? this.props.rangeClass : '' } ${ this.state.className }` }
                 onClick={ this.addClass }
                 type="text"
                 value={ this.props.value }
