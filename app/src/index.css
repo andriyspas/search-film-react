@@ -76,6 +76,13 @@ header {
         .search h2:last-child {
           font-size: 28px; } }
 
+.search-button{
+  position: absolute;
+  bottom: 65px;
+  right: 15px;
+  left: 1200px;
+}
+
 select {
   margin-bottom: 15px; }
 
