@@ -16,7 +16,8 @@ class App extends Component {
             actors: [],
             popularFilms: [],
             filter: 'film',
-            rangeClass: 'range'
+            rangeClass: 'range',
+            className: ''
         };
 
         this.fetchPopularFilms()
@@ -24,6 +25,10 @@ class App extends Component {
 
     setFilter = (value) => {
         this.setState({filter: value});
+    };
+
+    addClass = () => {
+        this.setState({className: "open"});
     };
 
     render() {
@@ -40,14 +45,20 @@ class App extends Component {
                     </Row>
 
                     <Row className="input-groups">
-                        <Col>
+                        <Col
+                            onClick={ this.addClass }
+                            className={this.state.className }
+                        >
                             <Search
                                 value={ this.state.search }
                                 onChange={ this.setSearch }
                                 rangeClass={ this.state.filter === 'range' ? this.state.rangeClass : '' }
                             />
 
-                            <Button className='search-button' onClick={ this.fetchData }>
+                            <Button
+                                className='search-button'
+                                onClick={ this.fetchData }
+                            >
                                 Search
                             </Button>
 
