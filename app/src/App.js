@@ -15,7 +15,9 @@ class App extends Component {
             films: [],
             actors: [],
             popularFilms: [],
-            filter: 'film'
+            filter: 'film',
+            rangeClass: 'range',
+            className: ''
         };
 
         this.fetchPopularFilms()
@@ -25,38 +27,52 @@ class App extends Component {
         this.setState({filter: value});
     };
 
+    addClass = () => {
+        this.setState({className: "open"});
+    };
+
     render() {
         return (
             <div className="App">
                 <Header/>
 
-                <section className="search">
-                    <Grid>
-                        <Row>
-                            <Col xs={12}>
-                                <h2>Lorem ipsum</h2>
-                                <h2>is simply dummy text of the printing and typesetting industry</h2>
-                            </Col>
-                        </Row>
+                <Grid fluid className="search">
+                    <Row>
+                        <Col xs={12}>
+                            <h2>Lorem ipsum</h2>
+                            <h2>is simply dummy text of the printing and typesetting industry</h2>
+                        </Col>
+                    </Row>
 
-                        <Search
-                            value={ this.state.search }
-                            onChange={ this.setSearch }
-                        />
-                        <Button className='search-button' onClick={ this.fetchData }>
-                            Search
-                        </Button>
-                        {
-                            this.state.filter === 'range' &&
+                    <Row className="input-groups">
+                        <Col
+                            onClick={ this.addClass }
+                            className={this.state.className }
+                        >
                             <Search
-                                value={ this.state.searchRange }
-                                onChange={ this.setSearchRange }
+                                value={ this.state.search }
+                                onChange={ this.setSearch }
+                                rangeClass={ this.state.filter === 'range' ? this.state.rangeClass : '' }
                             />
-                        }
 
+                            <Button
+                                className='search-button'
+                                onClick={ this.fetchData }
+                            >
+                                Search
+                            </Button>
 
-                    </Grid>
-                </section>
+                            {
+                                this.state.filter === 'range' &&
+                                <Search
+                                    value={ this.state.searchRange }
+                                    onChange={ this.setSearchRange }
+                                    rangeClass={ this.state.filter === 'range' ? this.state.rangeClass : '' }
+                                />
+                            }
+                        </Col>
+                    </Row>
+                </Grid>
 
                 <Filter
                     onChange={ this.setFilter }

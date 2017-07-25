@@ -36,9 +36,24 @@ header {
   @media (min-width: 768px) {
     .search {
       height: 400px; } }
-  .search input {
+  .search .input-groups {
+    position: absolute;
+    bottom: 20px;
+    right: 15px;
+    left: 15px;
     max-width: 768px;
-    margin: 0 auto;
+    margin: 0 auto; }
+    .search .input-groups .range {
+      display: inline-block;
+      width: 45%; }
+    .search .input-groups div {
+      transform: scale3d(0.5, 0.5, 1);
+      transition: transform 0.5s;
+      transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1); }
+      .search .input-groups div.open {
+        transform: translate3d(0, -50%, 0);
+        margin: auto; }
+  .search input {
     font-size: 24px;
     font-weight: 100;
     padding: 6px 0;
@@ -47,17 +62,13 @@ header {
     background: transparent;
     box-shadow: none;
     border-radius: 0;
-    height: 40px;
+    height: 40px; }
+  .search .search-button {
     position: absolute;
-    bottom: 40px;
-    right: 15px;
-    left: 15px;
-    transform: scale3d(0.5, 0.5, 1);
-    transition: all 0.5s;
-    transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1); }
-    .search input.open {
-      transform: translate3d(0, -50%, 0);
-      margin: auto; }
+    right: 0;
+    bottom: 0;
+    background: transparent;
+    border: 0; }
   .search h2 {
     text-align: center;
     font-weight: 100; }
@@ -71,13 +82,6 @@ header {
       @media (min-width: 768px) {
         .search h2:last-child {
           font-size: 28px; } }
-
-.search-button{
-  position: absolute;
-  bottom: 65px;
-  right: 15px;
-  left: 1200px;
-}
 
 select {
   margin-bottom: 15px; }
